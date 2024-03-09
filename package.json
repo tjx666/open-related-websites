@@ -1,0 +1,34 @@
+{
+    "name": "wxt-starter",
+    "description": "manifest.json description",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "prettier": "@yutengjing/prettier-config",
+    "scripts": {
+        "postinstall": "wxt prepare",
+        "dev": "wxt",
+        "dev:firefox": "wxt -b firefox",
+        "build": "wxt build",
+        "build:firefox": "wxt build -b firefox",
+        "zip": "wxt zip",
+        "zip:firefox": "wxt zip -b firefox",
+        "compile": "vue-tsc --noEmit",
+        "format": "prettier --write ."
+    },
+    "dependencies": {
+        "vue": "^3.4.21"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^5.0.4",
+        "@yutengjing/prettier-config": "^1.1.2",
+        "autoprefixer": "^10.4.18",
+        "postcss": "^8.4.35",
+        "postcss-load-config": "^5.0.3",
+        "prettier": "^3.2.5",
+        "tailwindcss": "^3.4.1",
+        "typescript": "^5.4.2",
+        "vue-tsc": "^2.0.6",
+        "wxt": "^0.17.7"
+    }
+}
