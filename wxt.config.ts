@@ -3,6 +3,10 @@ import vue from '@vitejs/plugin-vue';
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
+    runner: {
+        chromiumArgs: ['--auto-open-devtools-for-tabs'],
+        startUrls: ['https://github.com/tjx666/react-webpack-boilerplate'],
+    },
     imports: {
         addons: {
             vueTemplate: true,
