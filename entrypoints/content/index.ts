@@ -13,6 +13,7 @@ export default defineContentScript({
         const ui = await createShadowRootUi(ctx, {
             name: 'open-related-website',
             position: 'modal',
+            isolateEvents: true,
             onMount: (container) => {
                 // Define how your UI will be mounted inside the container
                 const app = createApp(App);
