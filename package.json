@@ -4,6 +4,14 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "eslintConfig": {
+        "extends": "@yutengjing/eslint-config-vue",
+        "settings": {
+            "import/resolver": {
+                "typescript": {}
+            }
+        }
+    },
     "prettier": "@yutengjing/prettier-config",
     "scripts": {
         "postinstall": "wxt prepare",
@@ -14,7 +22,8 @@
         "zip": "wxt zip",
         "zip:firefox": "wxt zip -b firefox",
         "compile": "vue-tsc --noEmit",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "lint": "eslint ."
     },
     "dependencies": {
         "@vueuse/core": "^10.9.0",
@@ -22,8 +31,11 @@
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^5.0.4",
+        "@yutengjing/eslint-config-vue": "^0.6.0",
         "@yutengjing/prettier-config": "^1.1.2",
         "autoprefixer": "^10.4.18",
+        "eslint": "^8.57.0",
+        "eslint-import-resolver-typescript": "^3.6.1",
         "postcss": "^8.4.35",
         "postcss-load-config": "^5.0.3",
         "prettier": "^3.2.5",

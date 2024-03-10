@@ -1,10 +1,13 @@
 <script lang="ts" setup>
-import { ref, shallowRef } from 'vue';
-import { RelatedWebsite } from './adapters/BaseAdapter';
-import { adapters } from './adapters';
-import { ResolveContext, createContext } from './createContext';
 import { onClickOutside } from '@vueuse/core';
+import { ref, shallowRef } from 'vue';
+
 import { useEscListener } from '@/hooks/useEscListener';
+
+import { adapters } from './adapters';
+import type { RelatedWebsite } from './adapters/BaseAdapter';
+import type { ResolveContext } from './createContext';
+import { createContext } from './createContext';
 
 function loadRelatedWebsites(context: ResolveContext) {
     return adapters
@@ -14,7 +17,9 @@ function loadRelatedWebsites(context: ResolveContext) {
 const context = createContext();
 const relatedWebsites = shallowRef<RelatedWebsite[]>(loadRelatedWebsites(context));
 
-// exit
+/**
+ * Exit
+ */
 function exit() {
     window.__contentScriptUI__.remove();
 }
@@ -42,8 +47,9 @@ function openWebsite(url: string) {
             />
             <ul class="max-h-80 overflow-y-scroll overscroll-contain">
                 <li
-                    class="flex h-10 cursor-pointer items-center border-b p-1 hover:bg-gray-300"
                     v-for="site of relatedWebsites"
+                    :key="site.name"
+                    class="flex h-10 cursor-pointer items-center border-b p-1 hover:bg-gray-300"
                     @click="openWebsite(site.url)"
                 >
                     <div class="mr-2" v-html="site.icon"></div>

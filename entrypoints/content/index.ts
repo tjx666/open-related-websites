@@ -1,6 +1,8 @@
-import { createApp } from 'vue';
-import App from './Search.vue';
 import '~/assets/main.css';
+
+import { createApp } from 'vue';
+
+import App from './Search.vue';
 
 export default defineContentScript({
     matches: ['https://github.com/*', 'https://gitlab.com/*'],

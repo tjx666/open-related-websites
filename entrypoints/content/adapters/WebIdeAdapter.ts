@@ -1,5 +1,5 @@
-import { ResolveContext } from '../createContext';
-import { BaseAdapter, RelatedWebsite } from './BaseAdapter';
+import type { ResolveContext } from '../createContext';
+import type { BaseAdapter, RelatedWebsite } from './BaseAdapter';
 
 interface IdeWebsite {
     title: string;
