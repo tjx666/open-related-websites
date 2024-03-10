@@ -7,16 +7,28 @@ import { useEscListener } from '@/hooks/useEscListener';
 
 import { adapters } from './adapters';
 import type { RelatedWebsite } from './adapters/BaseAdapter';
-import type { ResolveContext } from './createContext';
 import { createContext } from './createContext';
 
-function loadRelatedWebsites(context: ResolveContext) {
-    return adapters
-        .filter((adapter) => adapter.matches.some((regexp) => regexp.test(context.url)))
-        .flatMap((adapter) => adapter.resolve(context));
+const relatedWebsites = shallowRef<RelatedWebsite[]>([]);
+async function loadRelatedWebsites() {
+    const context = await createContext();
+    const matchedAdapters = adapters.filter((adapter) =>
+        adapter.matches.some((regexp) => regexp.test(context.url)),
+    );
+    const syncResult: RelatedWebsite[] = [];
+    for (const adapter of matchedAdapters) {
+        const returnVal = adapter.resolve(context);
+        if ('then' in returnVal) {
+            returnVal.then((sites) => {
+                relatedWebsites.value = [...relatedWebsites.value, ...sites];
+            });
+        } else {
+            syncResult.push(...returnVal);
+        }
+    }
+    relatedWebsites.value = syncResult;
 }
-const context = createContext();
-const relatedWebsites = shallowRef<RelatedWebsite[]>(loadRelatedWebsites(context));
+loadRelatedWebsites();
 
 // fuzzy search
 const searchStr = ref('');
@@ -54,7 +66,7 @@ function openWebsite(site: RelatedWebsite) {
                 class="h-10 w-full border border-solid border-black pl-2"
                 autofocus
             />
-            <ul class="max-h-80 overflow-y-scroll overscroll-contain">
+            <ul class="max-h-96 overflow-y-scroll overscroll-contain">
                 <li
                     v-for="site of filteredWebsites"
                     :key="site.name"

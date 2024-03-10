@@ -13,5 +13,5 @@ export interface BaseAdapter {
     name: string;
     description: string;
     matches: RegExp[];
-    resolve(context: ResolveContext): RelatedWebsite[];
+    resolve: (context: ResolveContext) => Promise<RelatedWebsite[]> | RelatedWebsite[];
 }
