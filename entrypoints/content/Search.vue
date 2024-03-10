@@ -1,36 +1,56 @@
 <script lang="ts" setup>
-import { shallowRef } from 'vue';
+import { ref, shallowRef } from 'vue';
 import { RelatedWebsite } from './adapters/BaseAdapter';
-import { WebIdeAdapter } from './adapters';
+import { adapters } from './adapters';
+import { ResolveContext, createContext } from './createContext';
+import { onClickOutside } from '@vueuse/core';
+import { useEscListener } from '@/hooks/useEscListener';
 
-function loadRelatedWebsites() {
-    return [...new WebIdeAdapter().resolve({})];
+function loadRelatedWebsites(context: ResolveContext) {
+    return adapters
+        .filter((adapter) => adapter.matches.some((regexp) => regexp.test(context.url)))
+        .flatMap((adapter) => adapter.resolve(context));
 }
+const context = createContext();
+const relatedWebsites = shallowRef<RelatedWebsite[]>(loadRelatedWebsites(context));
 
-const relatedWebsites = shallowRef<RelatedWebsite[]>(loadRelatedWebsites());
+// exit
+function exit() {
+    window.__contentScriptUI__.remove();
+}
+const root = ref<HTMLDivElement>();
+useEscListener(exit, root);
+const main = ref<HTMLDivElement>();
+onClickOutside(main, exit);
 
 function handleChange(e: Event) {
     e.stopPropagation();
 }
+
+function openWebsite(url: string) {
+    window.open(url, '_black');
+}
 </script>
 
 <template>
-    <div class="h-screen px-20">
-        <main class="mx-auto mt-32 min-w-96 bg-white shadow">
+    <div ref="root" class="h-screen px-20">
+        <main ref="main" class="mx-auto mt-32 min-w-96 max-w-2xl bg-white shadow">
             <input
                 class="h-10 w-full border border-solid border-black pl-2"
+                autofocus
                 @change="handleChange"
             />
-            <ul>
+            <ul class="max-h-80 overflow-y-scroll overscroll-contain">
                 <li
-                    class="flex h-10 cursor-pointer items-center border-b p-1"
+                    class="flex h-10 cursor-pointer items-center border-b p-1 hover:bg-gray-300"
                     v-for="site of relatedWebsites"
+                    @click="openWebsite(site.url)"
                 >
-                    <div v-html="site.icon"></div>
-                    <div>
-                        {{ site.title }}
-                        <p>{{ site.description }}</p>
-                    </div>
+                    <div class="mr-2" v-html="site.icon"></div>
+                    <p>
+                        <span class="mr-2 font-bold">{{ site.title }}</span>
+                        <span class="text-gray-600">{{ site.description }}</span>
+                    </p>
                 </li>
             </ul>
         </main>

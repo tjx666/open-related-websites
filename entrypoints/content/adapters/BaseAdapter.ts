@@ -1,4 +1,4 @@
-export interface ResolveContext {}
+import { ResolveContext } from '../createContext';
 
 export interface RelatedWebsite {
     name: string;
