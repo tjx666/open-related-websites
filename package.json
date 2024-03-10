@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@vueuse/core": "^10.9.0",
+        "fuse.js": "^7.0.0",
         "vue": "^3.4.21"
     },
     "devDependencies": {
