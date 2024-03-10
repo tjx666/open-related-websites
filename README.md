@@ -1,7 +1,9 @@
-# WXT + Vue 3
+# Open Related Website
 
-This template should help get you started developing with Vue 3 in WXT.
+A Chrome extension that enables you to effortlessly open websites related to the current page you're browsing.
 
-## Recommended IDE Setup
+## ❤️ Thanks
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- [GitHub-Web-IDE](https://github.com/zvizvi/GitHub-Web-IDE) provide idea to open web ide of a github repository
+- [WXT](https://github.com/wxt-dev/wxt) web extension development framework
+- [flaticon](https://www.flaticon.com/) provide free extension icon
