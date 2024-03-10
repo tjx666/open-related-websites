@@ -44,6 +44,19 @@ const filteredWebsites = computed(() => {
         });
 });
 
+function openWebsite(site: RelatedWebsite) {
+    window.open(site.url, site.openInNewTab ? '_blank' : '_self');
+}
+
+function handleKeydown(e: KeyboardEvent) {
+    if (e.key === 'Enter') {
+        const firstItem = filteredWebsites.value.at(0);
+        if (firstItem) {
+            openWebsite(firstItem);
+        }
+    }
+}
+
 // exit
 const root = ref<HTMLDivElement>();
 function exit() {
@@ -52,10 +65,6 @@ function exit() {
 useEscListener(exit, root);
 const main = ref<HTMLDivElement>();
 onClickOutside(main, exit);
-
-function openWebsite(site: RelatedWebsite) {
-    window.open(site.url, site.openInNewTab ? '_blank' : '_self');
-}
 </script>
 
 <template>
@@ -64,13 +73,15 @@ function openWebsite(site: RelatedWebsite) {
             <input
                 v-model="searchStr"
                 class="h-10 w-full border border-solid border-black pl-2"
+                placeholder="press enter to open the first item"
                 autofocus
+                @keydown="handleKeydown"
             />
             <ul class="max-h-96 overflow-y-scroll overscroll-contain">
                 <li
                     v-for="site of filteredWebsites"
                     :key="site.name"
-                    class="flex h-10 cursor-pointer items-center border-b p-1 hover:bg-gray-300"
+                    class="flex h-10 cursor-pointer items-center border-b p-2 hover:bg-gray-300"
                     @click="openWebsite(site)"
                 >
                     <div v-if="site.icon" class="mr-2" v-html="site.icon"></div>
