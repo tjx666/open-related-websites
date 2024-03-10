@@ -32,8 +32,8 @@ function handleChange(e: Event) {
     e.stopPropagation();
 }
 
-function openWebsite(url: string) {
-    window.open(url, '_black');
+function openWebsite(site: RelatedWebsite) {
+    window.open(site.url, site.openInNewTab ? '_blank' : '_self');
 }
 </script>
 
@@ -50,10 +50,10 @@ function openWebsite(url: string) {
                     v-for="site of relatedWebsites"
                     :key="site.name"
                     class="flex h-10 cursor-pointer items-center border-b p-1 hover:bg-gray-300"
-                    @click="openWebsite(site.url)"
+                    @click="openWebsite(site)"
                 >
-                    <div class="mr-2" v-html="site.icon"></div>
-                    <p>
+                    <div v-if="site.icon" class="mr-2" v-html="site.icon"></div>
+                    <p class="overflow-hidden text-ellipsis whitespace-nowrap">
                         <span class="mr-2 font-bold">{{ site.title }}</span>
                         <span class="text-gray-600">{{ site.description }}</span>
                     </p>
