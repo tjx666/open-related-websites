@@ -57,10 +57,20 @@ function handleKeydown(e: KeyboardEvent) {
     }
 }
 
+function parseIcon(icon: string) {
+    // inline svg
+    if (icon.startsWith('<svg')) {
+        const svg = new Blob([icon], { type: 'image/svg+xml' });
+        return URL.createObjectURL(svg);
+    }
+    // http link
+    return icon;
+}
+
 // exit
 const root = ref<HTMLDivElement>();
 function exit() {
-    window.__contentScriptUI__.remove();
+    window.__contentScriptUI__?.remove();
 }
 useEscListener(exit, root);
 const main = ref<HTMLDivElement>();
@@ -84,7 +94,7 @@ onClickOutside(main, exit);
                     class="flex h-10 cursor-pointer items-center border-b p-2 hover:bg-gray-300"
                     @click="openWebsite(site)"
                 >
-                    <div v-if="site.icon" class="mr-2" v-html="site.icon"></div>
+                    <img v-if="site.icon" class="mr-2 h-4 w-4" :src="parseIcon(site.icon)" />
                     <p class="overflow-hidden text-ellipsis whitespace-nowrap">
                         <span class="mr-2 font-bold">{{ site.title }}</span>
                         <span class="text-gray-600">{{ site.description }}</span>

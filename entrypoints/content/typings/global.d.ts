@@ -3,6 +3,6 @@ import { App } from 'vue';
 
 declare global {
     interface Window {
-        __contentScriptUI__: ShadowRootContentScriptUi<App<Element>>;
+        __contentScriptUI__?: ShadowRootContentScriptUi<App<Element>>;
     }
 }

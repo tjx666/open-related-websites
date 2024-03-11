@@ -11,9 +11,7 @@ export function useEscListener(
         }
     };
 
-    const getTarget = () =>
-        target instanceof Window || target instanceof HTMLElement ? target : target.value;
-
+    const getTarget = () => (target instanceof Window ? target : target.value);
     onMounted(() => {
         getTarget()?.addEventListener('keydown', onKeydown as any);
     });

@@ -28,11 +28,13 @@
     "dependencies": {
         "@vueuse/core": "^10.9.0",
         "fuse.js": "^7.0.0",
+        "lodash-es": "^4.17.21",
         "type-fest": "^4.12.0",
         "vue": "^3.4.21",
         "webext-bridge": "^6.0.1"
     },
     "devDependencies": {
+        "@types/lodash-es": "^4.17.12",
         "@vitejs/plugin-vue": "^5.0.4",
         "@yutengjing/eslint-config-vue": "^0.6.0",
         "@yutengjing/prettier-config": "^1.1.2",
