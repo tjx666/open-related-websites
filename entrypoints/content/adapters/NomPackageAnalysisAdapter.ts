@@ -7,11 +7,29 @@ export class NpmPackageAnalysisAdapter implements BaseAdapter {
     matches = [/https:\/\/github\.com\/.+\/.+/, /https:\/\/www\.npmjs\.com\/package\/.+/];
 
     async resolve(context: ResolveContext): Promise<RelatedWebsite[]> {
-        if (!context.hasPackageJson) return [];
+        const platform = context.host;
 
-        const pkg = await context.getPackageJson!();
+        if (platform === 'github.com' && !context.hasPackageJson) return [];
+
+        let packageName: string | undefined;
+        if (platform === 'github.com') {
+            const pkg = await context.getPackageJson!();
+            packageName = pkg.name;
+        } else {
+            packageName = location.pathname.split('/').slice(2, 4).join('/');
+        }
+        if (!packageName) return [];
+
         const npmIcon = 'https://static-production.npmjs.com/da3ab40fb0861d15c83854c29f5f2962.png';
         return [
+            {
+                title: 'Npm',
+                name: 'npm',
+                description: 'The home page of the npm package',
+                url: 'https://npmjs.com/package/',
+                icon: npmIcon,
+                platforms: ['github.com'],
+            },
             {
                 title: 'Npm Trends',
                 name: 'npmTrends',
@@ -76,12 +94,19 @@ export class NpmPackageAnalysisAdapter implements BaseAdapter {
                 url: 'https://npm.runkit.com/',
                 icon: 'https://runkit.com/apple-touch-icon-120x120-precomposed.png',
             },
-        ].map((item) => {
-            return {
-                ...item,
-                url: `${item.url}${pkg.name}`,
-                openInNewTab: true,
-            };
-        });
+        ]
+            .filter((item) => {
+                if (item.platforms && !item.platforms.includes(platform)) {
+                    return false;
+                }
+                return true;
+            })
+            .map((item) => {
+                return {
+                    ...item,
+                    url: `${item.url}${packageName}`,
+                    openInNewTab: true,
+                };
+            });
     }
 }

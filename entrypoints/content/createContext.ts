@@ -3,6 +3,7 @@ import { sendMessage } from 'webext-bridge/content-script';
 
 export interface ResolveContext {
     url: string;
+    host: string;
     hasPackageJson: boolean;
     _packageJson?: PackageJson;
     getPackageJson?: () => Promise<PackageJson>;
@@ -28,6 +29,7 @@ export async function createContext(): Promise<ResolveContext> {
 
     const context: ResolveContext = {
         url,
+        host: location.host,
         hasPackageJson: false,
     };
 

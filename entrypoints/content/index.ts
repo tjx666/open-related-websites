@@ -5,11 +5,12 @@ import { createApp } from 'vue';
 import App from './Search.vue';
 
 export default defineContentScript({
-    matches: ['https://github.com/*', 'https://gitlab.com/*'],
+    matches: ['https://*/*'],
     cssInjectionMode: 'ui',
     async main(ctx) {
         const ui = await createShadowRootUi(ctx, {
             name: 'open-related-website',
+            zIndex: 9999,
             position: 'modal',
             isolateEvents: true,
             onMount: (container) => {
