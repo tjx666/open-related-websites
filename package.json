@@ -2,7 +2,7 @@
     "name": "open-related-website",
     "description": "A Chrome extension that enables you to effortlessly open websites related to the current page you're browsing.",
     "private": true,
-    "version": "0.0.0",
+    "version": "0.0.1",
     "type": "module",
     "eslintConfig": {
         "extends": "@yutengjing/eslint-config-vue",
