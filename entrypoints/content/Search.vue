@@ -77,8 +77,8 @@ onClickOutside(main, exit);
 </script>
 
 <template>
-    <div ref="root" class="h-screen px-20">
-        <main ref="main" class="mx-auto mt-32 min-w-96 max-w-2xl bg-white shadow">
+    <div ref="root" class="h-screen bg-black bg-opacity-10 px-20 pt-32">
+        <main ref="main" class="mx-auto min-w-96 max-w-2xl bg-white shadow">
             <input
                 v-model="searchStr"
                 class="h-10 w-full border border-solid border-black pl-2"
