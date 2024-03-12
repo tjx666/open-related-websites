@@ -1,6 +1,6 @@
 {
     "name": "open-related-website",
-    "description": "A Chrome extension that enables you to effortlessly open websites related to the current page you're browsing.",
+    "description": "enables you to effortlessly open websites related to the current page you're browsing",
     "private": true,
     "version": "0.0.1",
     "type": "module",
