@@ -1,3 +1,4 @@
+import { Command } from '@/lib/commands';
 import { PackageJson } from 'type-fest';
 import { ProtocolWithReturn } from 'webext-bridge';
 
@@ -9,5 +10,6 @@ declare module 'webext-bridge' {
             },
             PackageJson
         >;
+        triggerCommand: ProtocolWithReturn<{ command: Command }, void>;
     }
 }

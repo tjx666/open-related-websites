@@ -8,6 +8,7 @@ import { useEscListener } from '@/hooks/useEscListener';
 import { adapters } from './adapters';
 import type { RelatedWebsite } from './adapters/BaseAdapter';
 import { createContext } from './createContext';
+import { exit } from './toggleExtension';
 
 const relatedWebsites = shallowRef<RelatedWebsite[]>([]);
 async function loadRelatedWebsites() {
@@ -69,9 +70,7 @@ function parseIcon(icon: string) {
 
 // exit
 const root = ref<HTMLDivElement>();
-function exit() {
-    window.__contentScriptUI__?.remove();
-}
+
 useEscListener(exit, root);
 const main = ref<HTMLDivElement>();
 onClickOutside(main, exit);
@@ -104,3 +103,4 @@ onClickOutside(main, exit);
         </main>
     </div>
 </template>
+./toggleExtension
