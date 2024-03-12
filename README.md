@@ -1,6 +1,12 @@
 # Open Related Website
 
-A Chrome extension that enables you to effortlessly open websites related to the current page you're browsing.
+A chrome extension that enables you to effortlessly open websites related to the current page you're browsing.
+
+![using in github](./screenshots/github.png)
+
+## TODOs
+
+- [ ] custom adapters
 
 ## ❤️ Thanks
 
