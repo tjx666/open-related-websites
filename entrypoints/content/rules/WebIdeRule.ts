@@ -1,7 +1,7 @@
 import { omit } from 'lodash-es';
 
 import type { ResolveContext } from '../createContext';
-import type { BaseAdapter, RelatedWebsite } from './BaseAdapter';
+import type { BaseRule, RelatedWebsite } from './BaseRule';
 
 interface IdeWebsite {
     title: string;
@@ -41,7 +41,7 @@ const ideWebsitesList: IdeWebsite[] = [
     },
 ];
 
-export class WebIdeAdapter implements BaseAdapter {
+export class WebIdeRule implements BaseRule {
     name = 'Web IDE';
     description = 'Quickly open the repository in web ide';
     matches = [/https:\/\/(github|gitlab)\.com\/.+\/.+/];

@@ -9,7 +9,7 @@ export interface RelatedWebsite {
     openInNewTab: boolean;
 }
 
-export interface BaseAdapter {
+export interface BaseRule {
     name: string;
     description: string;
     matches: RegExp[];

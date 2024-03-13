@@ -1,7 +1,7 @@
 import type { ResolveContext } from '../createContext';
-import type { BaseAdapter, RelatedWebsite } from './BaseAdapter';
+import type { BaseRule, RelatedWebsite } from './BaseRule';
 
-export class NpmPackageAnalysisAdapter implements BaseAdapter {
+export class NpmPackageAnalysisRule implements BaseRule {
     name = 'Repository Analysis';
     description = 'Provide some tool website to analyze the git repository';
     matches = [/https:\/\/github\.com\/.+\/.+/, /https:\/\/www\.npmjs\.com\/package\/.+/];

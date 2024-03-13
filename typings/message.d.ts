@@ -4,12 +4,7 @@ import { ProtocolWithReturn } from 'webext-bridge';
 
 declare module 'webext-bridge' {
     export interface ProtocolMap {
-        getNpmPackageJson: ProtocolWithReturn<
-            {
-                url: string;
-            },
-            PackageJson
-        >;
+        getNpmPackageJson: ProtocolWithReturn<{ url: string }, PackageJson>;
         triggerCommand: ProtocolWithReturn<{ command: Command }, void>;
     }
 }

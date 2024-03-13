@@ -8,10 +8,9 @@ export default defineBackground(() => {
         return fetch(data.url).then((response) => response.json());
     });
 
-    // transfer commands
+    // transfer commands to content script
     browser.commands.onCommand.addListener(async (command) => {
         const [activeTab] = await browser.tabs.query({ active: true, currentWindow: true });
-        // console.log('sendMessage', command, activeTabId);
         sendMessage(
             'triggerCommand',
             { command: command as Command },

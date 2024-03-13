@@ -5,20 +5,20 @@ import { computed, ref, shallowRef } from 'vue';
 
 import { useEscListener } from '@/hooks/useEscListener';
 
-import { adapters } from './adapters';
-import type { RelatedWebsite } from './adapters/BaseAdapter';
 import { createContext } from './createContext';
+import { rules } from './rules';
+import type { RelatedWebsite } from './rules/BaseRule';
 import { exit } from './toggleExtension';
 
 const relatedWebsites = shallowRef<RelatedWebsite[]>([]);
 async function loadRelatedWebsites() {
     const context = await createContext();
-    const matchedAdapters = adapters.filter((adapter) =>
-        adapter.matches.some((regexp) => regexp.test(context.url)),
+    const matchedRules = rules.filter((rule) =>
+        rule.matches.some((regexp) => regexp.test(context.url)),
     );
     const syncResult: RelatedWebsite[] = [];
-    for (const adapter of matchedAdapters) {
-        const returnVal = adapter.resolve(context);
+    for (const rule of matchedRules) {
+        const returnVal = rule.resolve(context);
         if ('then' in returnVal) {
             returnVal.then((sites) => {
                 relatedWebsites.value = [...relatedWebsites.value, ...sites];
@@ -103,4 +103,3 @@ onClickOutside(main, exit);
         </main>
     </div>
 </template>
-./toggleExtension

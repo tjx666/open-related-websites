@@ -1,7 +1,7 @@
 import type { ResolveContext } from '../createContext';
-import type { BaseAdapter, RelatedWebsite } from './BaseAdapter';
+import type { BaseRule, RelatedWebsite } from './BaseRule';
 
-export class VSCodeAdapter implements BaseAdapter {
+export class VSCodeRule implements BaseRule {
     name = 'VSCode';
     description = 'Provide some local VSCode features';
     matches = [/https:\/\/github\.com\/.+\/.+/];
