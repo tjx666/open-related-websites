@@ -27,10 +27,12 @@
     },
     "dependencies": {
         "@vueuse/core": "^10.9.0",
+        "ant-design-vue": "^4.1.2",
         "fuse.js": "^7.0.0",
         "lodash-es": "^4.17.21",
         "type-fest": "^4.12.0",
         "vue": "^3.4.21",
+        "vue-router": "^4.3.0",
         "webext-bridge": "^6.0.1"
     },
     "devDependencies": {
@@ -49,5 +51,6 @@
         "typescript": "^5.4.2",
         "vue-tsc": "^2.0.6",
         "wxt": "^0.17.7"
-    }
+    },
+    "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2"
 }
