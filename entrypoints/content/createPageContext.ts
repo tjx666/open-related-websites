@@ -1,12 +1,8 @@
-import type { PackageJson } from 'type-fest';
-import { sendMessage } from 'webext-bridge/content-script';
-
-export interface ResolveContext {
+export interface PageContext {
     url: string;
     host: string;
     hasPackageJson: boolean;
-    _packageJson?: PackageJson;
-    getPackageJson?: () => Promise<PackageJson>;
+    packageJsonLink?: string;
     repoPath?: string;
     github?: {
         repo?: {
@@ -24,10 +20,10 @@ export interface ResolveContext {
     };
 }
 
-export async function createContext(): Promise<ResolveContext> {
+export async function createPageContext(): Promise<PageContext> {
     const url = location.href;
 
-    const context: ResolveContext = {
+    const context: PageContext = {
         url,
         host: location.host,
         hasPackageJson: false,
@@ -58,18 +54,7 @@ export async function createContext(): Promise<ResolveContext> {
         }
 
         if (packageJsonLink) {
-            context.getPackageJson = async () => {
-                if (!context._packageJson) {
-                    context._packageJson = await sendMessage(
-                        'getNpmPackageJson',
-                        {
-                            url: packageJsonLink,
-                        },
-                        'background',
-                    );
-                }
-                return context._packageJson;
-            };
+            context.packageJsonLink = packageJsonLink;
         }
     } else if (location.hostname === 'gitlab.com') {
         context.gitlab = {};

@@ -1,49 +1,16 @@
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core';
-import Fuse from 'fuse.js';
-import { computed, ref, shallowRef } from 'vue';
+import { ref } from 'vue';
 
 import { useEscListener } from '@/hooks/useEscListener';
 
-import { createContext } from './createContext';
-import { rules } from './rules';
-import type { RelatedWebsite } from './rules/BaseRule';
+import type { RelatedWebsite } from '../background/rules/BaseRule';
+import { useRelatedWebsites } from './composables/useRelatedWebsites';
 import { exit } from './toggleExtension';
-
-const relatedWebsites = shallowRef<RelatedWebsite[]>([]);
-async function loadRelatedWebsites() {
-    const context = await createContext();
-    const matchedRules = rules.filter((rule) =>
-        rule.matches.some((regexp) => regexp.test(context.url)),
-    );
-    const syncResult: RelatedWebsite[] = [];
-    for (const rule of matchedRules) {
-        const returnVal = rule.resolve(context);
-        if ('then' in returnVal) {
-            returnVal.then((sites) => {
-                relatedWebsites.value = [...relatedWebsites.value, ...sites];
-            });
-        } else {
-            syncResult.push(...returnVal);
-        }
-    }
-    relatedWebsites.value = syncResult;
-}
-loadRelatedWebsites();
 
 // fuzzy search
 const searchStr = ref('');
-const filteredWebsites = computed(() => {
-    if (searchStr.value.trim() === '') return relatedWebsites.value;
-
-    return new Fuse(relatedWebsites.value, {
-        keys: ['name', 'title', 'description'],
-    })
-        .search(searchStr.value)
-        .map((item) => {
-            return item.item;
-        });
-});
+const filteredWebsites = useRelatedWebsites(searchStr);
 
 function openWebsite(site: RelatedWebsite) {
     window.open(site.url, site.openInNewTab ? '_blank' : '_self');
@@ -70,7 +37,6 @@ function parseIcon(icon: string) {
 
 // exit
 const root = ref<HTMLDivElement>();
-
 useEscListener(exit, root);
 const main = ref<HTMLDivElement>();
 onClickOutside(main, exit);
@@ -103,3 +69,4 @@ onClickOutside(main, exit);
         </main>
     </div>
 </template>
+../background/rules../background/rules/BaseRule./composables/composable./composables/composable

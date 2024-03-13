@@ -1,12 +1,11 @@
-import { onMessage, sendMessage } from 'webext-bridge/background';
+import { sendMessage } from 'webext-bridge/background';
 
 import type { Command } from '@/lib/commands';
 
-export default defineBackground(() => {
-    // because CORS limitation in content script
-    onMessage('getNpmPackageJson', async ({ data }) => {
-        return fetch(data.url).then((response) => response.json());
-    });
+import { registerServices } from './services';
+
+export default defineBackground(async () => {
+    await registerServices();
 
     // transfer commands to content script
     browser.commands.onCommand.addListener(async (command) => {

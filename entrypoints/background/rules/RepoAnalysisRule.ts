@@ -1,4 +1,4 @@
-import type { ResolveContext } from '../createContext';
+import type { ResolveContext } from '../createResolveContext';
 import type { BaseRule, RelatedWebsite } from './BaseRule';
 
 export class RepoAnalysisRule implements BaseRule {

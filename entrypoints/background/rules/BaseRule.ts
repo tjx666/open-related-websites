@@ -1,4 +1,4 @@
-import type { ResolveContext } from '../createContext';
+import type { ResolveContext } from '../createResolveContext';
 
 export interface RelatedWebsite {
     name: string;
