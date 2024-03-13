@@ -4,6 +4,12 @@ A Chrome extension to quickly open websites related to the current page.
 
 ![use on github](./screenshots/github.png)
 
+## 🔧 Install
+
+[link-chrome]: https://chromewebstore.google.com/detail/open-related-website/kgpcgldebjnldkgfiecjogencpiadpml 'Version published on Chrome Web Store'
+
+[<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/chrome/chrome.svg" width="48" alt="Chrome" valign="middle">][link-chrome] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/kgpcgldebjnldkgfiecjogencpiadpml.svg?label=%20">][link-chrome] and other Chromium browsers
+
 ## 🔍 Usage
 
 Just use the shortcut `Alt + O` to open the search box, click the website you want to open.
