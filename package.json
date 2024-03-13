@@ -1,6 +1,6 @@
 {
     "name": "open-related-website",
-    "description": "enables you to effortlessly open websites related to the current page you're browsing",
+    "description": "quickly open websites related to current page",
     "private": true,
     "version": "0.0.1",
     "type": "module",

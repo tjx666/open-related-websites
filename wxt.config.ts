@@ -4,7 +4,6 @@ import type { Manifest } from 'wxt/browser';
 
 import type { Command } from './lib/commands';
 
-// See https://wxt.dev/api/config.html
 export default defineConfig({
     manifest: {
         name: 'Open Related Website',
@@ -19,7 +18,7 @@ export default defineConfig({
     },
     runner: {
         chromiumArgs: ['--auto-open-devtools-for-tabs'],
-        startUrls: ['https://github.com/tjx666/react-webpack-boilerplate'],
+        startUrls: ['https://github.com/lodash/lodash'],
     },
     imports: {
         addons: {
