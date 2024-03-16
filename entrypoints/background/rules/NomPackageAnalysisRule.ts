@@ -2,8 +2,8 @@ import type { ResolveContext } from '../createResolveContext';
 import type { BaseRule, RelatedWebsite } from './BaseRule';
 
 export class NpmPackageAnalysisRule implements BaseRule {
-    name = 'Repository Analysis';
-    description = 'Provide some tool website to analyze the git repository';
+    name = 'Npm Package Analysis';
+    description = 'Some tool website to analyze the npm package';
     matches = [/https:\/\/github\.com\/.+\/.+/, /https:\/\/www\.npmjs\.com\/package\/.+/];
 
     async resolve(context: ResolveContext): Promise<RelatedWebsite[]> {

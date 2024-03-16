@@ -3,7 +3,7 @@ import type { BaseRule, RelatedWebsite } from './BaseRule';
 
 export class RepoAnalysisRule implements BaseRule {
     name = 'Repository Analysis';
-    description = 'Provide some tool website to analyze the git repository';
+    description = 'Some tool websites to analyze the git repository';
     matches = [/https:\/\/github\.com\/.+\/.+/];
 
     resolve(context: ResolveContext): RelatedWebsite[] {

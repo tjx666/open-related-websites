@@ -15,7 +15,7 @@ interface IdeWebsite {
 
 export class WebIdeRule implements BaseRule {
     name = 'Web IDE';
-    description = 'Quickly open the repository in web ide';
+    description = 'Import the repository in web IDE';
     matches = [/https:\/\/(github|gitlab)\.com\/.+\/.+/];
 
     resolve(context: ResolveContext): RelatedWebsite[] {
