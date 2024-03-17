@@ -1,6 +1,7 @@
 export interface PageContext {
     url: string;
     host: string;
+    pathname: string;
     hasPackageJson: boolean;
     packageJsonLink?: string;
     repoPath?: string;
@@ -26,6 +27,7 @@ export async function createPageContext(): Promise<PageContext> {
     const context: PageContext = {
         url,
         host: location.host,
+        pathname: location.pathname,
         hasPackageJson: false,
     };
 

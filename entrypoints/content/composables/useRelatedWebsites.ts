@@ -9,16 +9,16 @@ import { createPageContext } from '../createPageContext';
 export function useRelatedWebsites(searchStr: Ref<string>) {
     const relatedWebsites = shallowRef<RelatedWebsite[]>([]);
 
+    onMessage('asyncUpdateRelatedWebsites', ({ data }) => {
+        relatedWebsites.value = [...relatedWebsites.value, ...data.moreRelatedWebsites];
+    });
+
     (async function () {
         const syncResult = await sendMessage('getRelatedWebsites', {
             context: await createPageContext(),
         });
-        relatedWebsites.value = syncResult;
+        relatedWebsites.value = [...relatedWebsites.value, ...syncResult];
     })();
-
-    onMessage('asyncUpdateRelatedWebsites', ({ data }) => {
-        relatedWebsites.value = [...relatedWebsites.value, ...data.moreRelatedWebsites];
-    });
 
     const filteredWebsites = computed(() => {
         if (searchStr.value.trim() === '') return relatedWebsites.value;

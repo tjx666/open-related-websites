@@ -1,5 +1,7 @@
+import type { RelatedWebsite } from 'webext-bridge';
+
 import type { ResolveContext } from '../createResolveContext';
-import type { BaseRule, RelatedWebsite } from './BaseRule';
+import type { BaseRule } from './BaseRule';
 
 export class RepoAnalysisRule implements BaseRule {
     name = 'Repository Analysis';

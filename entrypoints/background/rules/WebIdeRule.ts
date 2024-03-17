@@ -1,7 +1,8 @@
 import { omit } from 'lodash-es';
+import type { RelatedWebsite } from 'webext-bridge';
 
 import type { ResolveContext } from '../createResolveContext';
-import type { BaseRule, RelatedWebsite } from './BaseRule';
+import type { BaseRule } from './BaseRule';
 
 interface IdeWebsite {
     title: string;

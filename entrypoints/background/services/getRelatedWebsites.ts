@@ -1,8 +1,8 @@
+import type { RelatedWebsite } from 'webext-bridge';
 import { onMessage, sendMessage } from 'webext-bridge/background';
 
 import { createResolveContext } from '../createResolveContext';
 import { rules } from '../rules';
-import type { RelatedWebsite } from '../rules/BaseRule';
 
 export async function getRelatedWebsites() {
     onMessage('getRelatedWebsites', async ({ data, sender }) => {

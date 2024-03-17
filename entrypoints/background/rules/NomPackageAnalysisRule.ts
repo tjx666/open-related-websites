@@ -1,5 +1,7 @@
+import type { RelatedWebsite } from 'webext-bridge';
+
 import type { ResolveContext } from '../createResolveContext';
-import type { BaseRule, RelatedWebsite } from './BaseRule';
+import type { BaseRule } from './BaseRule';
 
 export class NpmPackageAnalysisRule implements BaseRule {
     name = 'Npm Package Analysis';
@@ -16,7 +18,7 @@ export class NpmPackageAnalysisRule implements BaseRule {
             const pkg = await context.getPackageJson!();
             packageName = pkg.name;
         } else {
-            packageName = location.pathname.split('/').slice(2, 4).join('/');
+            packageName = context.pathname.split('/').slice(2, 4).join('/');
         }
         if (!packageName) return [];
 
