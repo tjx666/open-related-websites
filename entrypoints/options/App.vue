@@ -1,28 +1,23 @@
-<script lang="ts" setup>
-import { ConfigProvider, Layout, LayoutContent, LayoutSider, Menu, MenuItem } from 'ant-design-vue';
-import { RouterLink, RouterView } from 'vue-router';
-</script>
-
 <template>
-    <ConfigProvider
+    <a-config-provider
         :theme="{
             token: {
                 colorPrimary: '#467ee7',
             },
         }"
     >
-        <Layout class="h-screen overflow-y-scroll bg-white">
-            <LayoutSider class="!bg-white">
-                <Menu>
-                    <MenuItem key="rules">
-                        <RouterLink to="/rules">rules</RouterLink>
-                    </MenuItem>
-                    <MenuItem key="context">
-                        <RouterLink to="/context">context</RouterLink>
-                    </MenuItem>
-                </Menu>
-            </LayoutSider>
-            <LayoutContent><RouterView /> </LayoutContent>
-        </Layout>
-    </ConfigProvider>
+        <a-layout class="h-screen overflow-y-scroll bg-white">
+            <a-layout-sider class="!bg-white">
+                <a-menu>
+                    <a-menu-item key="rules">
+                        <router-link to="/rules">rules</router-link>
+                    </a-menu-item>
+                    <a-menu-item key="context">
+                        <router-link to="/context">context</router-link>
+                    </a-menu-item>
+                </a-menu>
+            </a-layout-sider>
+            <a-layout-content><router-view /> </a-layout-content>
+        </a-layout>
+    </a-config-provider>
 </template>

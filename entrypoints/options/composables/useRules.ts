@@ -1,8 +1,7 @@
 import type { Ref } from 'vue';
 import { shallowRef, watch } from 'vue';
+import type { RuleItem } from 'webext-bridge';
 import { sendMessage } from 'webext-bridge/options';
-
-import type { RuleItem } from '@/entrypoints/background/services/getRules';
 
 export function useRules(showBuiltin: Ref<boolean>) {
     const rules = shallowRef<RuleItem[]>([]);

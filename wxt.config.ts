@@ -1,4 +1,6 @@
 import vue from '@vitejs/plugin-vue';
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
+import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'wxt';
 import type { Manifest } from 'wxt/browser';
 
@@ -30,6 +32,18 @@ export default defineConfig({
         },
     },
     vite: () => ({
-        plugins: [vue()],
+        css: {
+            devSourcemap: true,
+        },
+        plugins: [
+            vue(),
+            Components({
+                resolvers: [
+                    AntDesignVueResolver({
+                        importStyle: false,
+                    }),
+                ],
+            }),
+        ],
     }),
 });

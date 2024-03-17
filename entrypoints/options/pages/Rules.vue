@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { TableColumnType } from 'ant-design-vue';
-import { Switch, Table } from 'ant-design-vue';
 
 import { useRules } from '../composables/useRules';
 import { useSyncStorage } from '../composables/useStorage';
@@ -25,11 +24,11 @@ const dataSource = useRules(showBuiltinRules);
     <div>
         <div class="my-6">
             <label>
-                <Switch v-model:checked="showBuiltinRules" />
+                <a-switch v-model:checked="showBuiltinRules" />
                 <span>Show builtin</span>
             </label>
         </div>
-        <Table :columns :dataSource />
+        <a-table :columns :data-source />
     </div>
 </template>
 

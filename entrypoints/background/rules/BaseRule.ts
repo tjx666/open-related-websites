@@ -1,13 +1,6 @@
-import type { ResolveContext } from '../createResolveContext';
+import type { RelatedWebsite } from 'webext-bridge';
 
-export interface RelatedWebsite {
-    name: string;
-    title: string;
-    description: string;
-    icon?: string;
-    url: string;
-    openInNewTab: boolean;
-}
+import type { ResolveContext } from '../createResolveContext';
 
 export interface BaseRule {
     name: string;

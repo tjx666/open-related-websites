@@ -1,11 +1,25 @@
-import { RelatedWebsite } from '@/entrypoints/background/rules/BaseRule';
 import { Command } from '@/lib/commands';
 import { PackageJson } from 'type-fest';
 import { ProtocolWithReturn } from 'webext-bridge';
 
-import { RuleItem } from '@/entrypoints/background/services/getRules';
-
 declare module 'webext-bridge' {
+    export interface RelatedWebsite {
+        name: string;
+        title: string;
+        description: string;
+        icon?: string;
+        url: string;
+        openInNewTab: boolean;
+    }
+
+    export interface RuleItem {
+        name: string;
+        description: string;
+        isBuiltin: boolean;
+        language: 'json' | 'javascript';
+        details: string;
+    }
+
     export interface ProtocolMap {
         triggerCommand: ProtocolWithReturn<{ command: Command }, void>;
 

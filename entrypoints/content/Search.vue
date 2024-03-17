@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { onClickOutside } from '@vueuse/core';
 import { ref } from 'vue';
+import type { RelatedWebsite } from 'webext-bridge';
 
 import { useEscListener } from '@/hooks/useEscListener';
 
-import type { RelatedWebsite } from '../background/rules/BaseRule';
 import { useRelatedWebsites } from './composables/useRelatedWebsites';
 import { exit } from './toggleExtension';
 
