@@ -1,5 +1,7 @@
 import { getRelatedWebsites } from './getRelatedWebsites';
+import { getRules } from './getRules';
 
 export async function registerServices() {
-    await getRelatedWebsites();
+    getRelatedWebsites();
+    getRules();
 }

@@ -3,9 +3,10 @@ import { Command } from '@/lib/commands';
 import { PackageJson } from 'type-fest';
 import { ProtocolWithReturn } from 'webext-bridge';
 
+import { RuleItem } from '@/entrypoints/background/services/getRules';
+
 declare module 'webext-bridge' {
     export interface ProtocolMap {
-        getNpmPackageJson: ProtocolWithReturn<{ url: string }, PackageJson>;
         triggerCommand: ProtocolWithReturn<{ command: Command }, void>;
 
         getRelatedWebsites: ProtocolWithReturn<{ context: PageContext }, RelatedWebsite[]>;
@@ -13,5 +14,7 @@ declare module 'webext-bridge' {
             { moreRelatedWebsites: RelatedWebsite[] },
             void
         >;
+
+        getRules: ProtocolWithReturn<{}, RuleItem[]>;
     }
 }

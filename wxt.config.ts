@@ -7,6 +7,7 @@ import type { Command } from './lib/commands';
 export default defineConfig({
     manifest: {
         name: 'Open Related Website',
+        permissions: ['storage'],
         commands: {
             toggleExtension: {
                 suggested_key: {
@@ -18,7 +19,10 @@ export default defineConfig({
     },
     runner: {
         chromiumArgs: ['--auto-open-devtools-for-tabs'],
-        startUrls: ['https://github.com/lodash/lodash'],
+        startUrls: [
+            'https://github.com/lodash/lodash',
+            'chrome-extension://lliohlaehpeobmekpjhdhlbokgcmhpab/options.html',
+        ],
     },
     imports: {
         addons: {
