@@ -26,6 +26,7 @@
         "lint": "eslint ."
     },
     "dependencies": {
+        "@unocss/reset": "^0.58.6",
         "@vueuse/core": "^10.9.0",
         "ant-design-vue": "^4.1.2",
         "fuse.js": "^7.0.0",
