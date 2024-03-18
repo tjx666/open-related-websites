@@ -4,8 +4,8 @@ import type { Command } from '@/lib/commands';
 
 import { registerServices } from './services';
 
-export default defineBackground(async () => {
-    await registerServices();
+export default defineBackground(() => {
+    registerServices();
 
     // transfer commands to content script
     browser.commands.onCommand.addListener(async (command) => {

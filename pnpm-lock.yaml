@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@ant-design/icons-vue':
+    specifier: ^7.0.1
+    version: 7.0.1(vue@3.4.21)
   '@unocss/reset':
     specifier: ^0.58.6
     version: 0.58.6
@@ -20,6 +23,9 @@ dependencies:
   lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
+  monaco-editor:
+    specifier: ^0.47.0
+    version: 0.47.0
   type-fest:
     specifier: ^4.12.0
     version: 4.12.0
@@ -4638,6 +4644,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /monaco-editor@0.47.0:
+    resolution: {integrity: sha512-VabVvHvQ9QmMwXu4du008ZDuyLnHs9j7ThVFsiJoXSOQk18+LF89N4ADzPbFenm0W4V2bGHnFBztIRQTgBfxzw==}
+    dev: false
 
   /ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}

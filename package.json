@@ -4,7 +4,7 @@
     "private": true,
     "version": "0.0.1",
     "type": "module",
-    "packageManager": "pnpm@8.15.4",
+    "packageManager": "pnpm@8.15.5",
     "eslintConfig": {
         "extends": "@yutengjing/eslint-config-vue",
         "settings": {
@@ -27,11 +27,13 @@
         "lint": "eslint ."
     },
     "dependencies": {
+        "@ant-design/icons-vue": "^7.0.1",
         "@unocss/reset": "^0.58.6",
         "@vueuse/core": "^10.9.0",
         "ant-design-vue": "^4.1.2",
         "fuse.js": "^7.0.0",
         "lodash-es": "^4.17.21",
+        "monaco-editor": "^0.47.0",
         "type-fest": "^4.12.0",
         "vue": "^3.4.21",
         "vue-router": "^4.3.0",

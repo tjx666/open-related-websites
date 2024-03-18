@@ -1,0 +1,5 @@
+{
+    "name": "规则名称",
+    "description": "规则描述",
+    "matches": ["https://www.baidu.com*"]
+}
